@@ -10,18 +10,24 @@ import javafx.scene.layout.Pane;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
-    private static final float speed = 2;
+    private static float speed = 2;
     private static final float turnRate = 2;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
+    private String playerName;
 
-    public SnakeHead(Pane pane, int xc, int yc) {
+    public SnakeHead(Pane pane, String playerName, int xc, int yc) {
         super(pane);
         setX(xc);
         setY(yc);
         health = 100;
         tail = this;
-        setImage(Globals.snakeHead);
+        this.playerName = playerName;
+        if (this.playerName.equals("Player1")) {
+            setImage(Globals.p1snakeHead);
+        } else {
+            setImage(Globals.p2snakeHead);
+        }
         pane.getChildren().add(this);
 
         addPart(4);
@@ -29,12 +35,26 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void step() {
         double dir = getRotate();
-        if (Globals.leftKeyDown) {
-            dir = dir - turnRate;
+
+        if (this.playerName.equals("Player1")) {
+
+            if (Globals.player1Left) {
+                dir = dir - turnRate;
+            }
+            if (Globals.player1Right) {
+                dir = dir + turnRate;
+            }
+
+        } else if (this.playerName.equals("Player2")) {
+
+            if (Globals.player2Left) {
+                dir = dir - turnRate;
+            }
+            if (Globals.player2Right) {
+                dir = dir + turnRate;
+            }
         }
-        if (Globals.rightKeyDown) {
-            dir = dir + turnRate;
-        }
+
         // set rotation and position
         setRotate(dir);
         Point2D heading = Utils.directionToVector(dir, speed);
@@ -61,7 +81,7 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void addPart(int numParts) {
         for (int i = 0; i < numParts; i++) {
-            SnakeBody newPart = new SnakeBody(pane, tail);
+            SnakeBody newPart = new SnakeBody(pane, tail, playerName);
             tail = newPart;
         }
     }
