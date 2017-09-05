@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         Game game = new Game();
 
-        primaryStage.setTitle("Snake Game");
+        primaryStage.setTitle("Snake Game by Crash Test Dummies");
         primaryStage.setScene(new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
         primaryStage.show();
         game.start();

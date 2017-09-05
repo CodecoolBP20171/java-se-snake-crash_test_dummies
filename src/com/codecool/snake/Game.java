@@ -22,12 +22,15 @@ public class Game extends Pane {
         new SimplePowerup(this);
     }
 
+
+
     public void start() {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = true; break;
                 case RIGHT: Globals.rightKeyDown  = true; break;
+                case R: Globals.rKeyDown = true; break;
             }
         });
 
@@ -35,8 +38,10 @@ public class Game extends Pane {
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = false; break;
                 case RIGHT: Globals.rightKeyDown  = false; break;
+                case R: Globals.rKeyDown = false; break;
             }
         });
+
         Globals.gameLoop = new GameLoop();
         Globals.gameLoop.start();
     }

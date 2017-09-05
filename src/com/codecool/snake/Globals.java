@@ -7,12 +7,13 @@ import javafx.scene.image.Image;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.stage.Screen;
 
 // class for holding all static stuff
 public class Globals {
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = Screen.getPrimary().getVisualBounds().getWidth();
+    public static final double WINDOW_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight();
 
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");
@@ -22,6 +23,7 @@ public class Globals {
 
     public static boolean leftKeyDown;
     public static boolean rightKeyDown;
+    public static boolean rKeyDown = false;
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.

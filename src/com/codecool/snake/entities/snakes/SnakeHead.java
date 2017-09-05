@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -50,6 +51,10 @@ public class SnakeHead extends GameEntity implements Animatable {
                     System.out.println(interactable.getMessage());
                 }
             }
+        }
+        if (Globals.rKeyDown) {
+            //Globals.rKeyDown = true;
+            Globals.gameLoop.start();
         }
 
         // check for game over condition
