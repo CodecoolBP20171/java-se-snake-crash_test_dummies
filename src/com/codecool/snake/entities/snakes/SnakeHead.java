@@ -67,7 +67,15 @@ public class SnakeHead extends GameEntity implements Animatable {
                 if (entity instanceof Interactable) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
-                    System.out.println(interactable.getMessage());
+
+                    // if SnakeHead interacts with SnakeBody, then check if the two are from different players, otherwise, getMessage() spams.
+                    if(!interactable.getClass().getSimpleName().equals("SnakeBody")){
+                        System.out.println(interactable.getMessage());
+                    } else {
+                        if (!((SnakeBody) interactable).getPlayerName().equals(this.getPlayerName())) {
+                            System.out.println(interactable.getMessage());
+                        }
+                    }
                 }
             }
         }
@@ -77,6 +85,10 @@ public class SnakeHead extends GameEntity implements Animatable {
             System.out.println("Game Over");
             Globals.gameLoop.stop();
         }
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     public void addPart(int numParts) {
