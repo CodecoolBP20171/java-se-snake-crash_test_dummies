@@ -46,6 +46,7 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
         return playerName;
     }
 
+    @Override
     public void step() {
         Vec2d pos = history.poll(); // remove the oldest item from the history
         setX(pos.x);
@@ -53,12 +54,14 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
         history.add(new Vec2d(parent.getX(), parent.getY())); // add the parent's current position to the beginning of the history
     }
 
+    @Override
     public void apply(SnakeHead snakeHead){
         if (!snakeHead.getPlayerName().equals(this.getPlayerName())){
             Globals.gameLoop.stop();
         }
     }
 
+    @Override
     public String getMessage() {
             return "Game over";
     }
