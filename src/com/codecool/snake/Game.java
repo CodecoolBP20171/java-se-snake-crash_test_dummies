@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.SpawnController;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -16,28 +17,30 @@ import java.util.List;
 public class Game extends Pane {
 
     public Game() {
-        List<SnakeHead> players = new ArrayList<>(2);
+        Globals.players = new ArrayList<>(2);
         SnakeHead player1, player2;
 
         if(Globals.coop) {
             player1 = new SnakeHead(this, "Player1", 700, 500);
             player2 = new SnakeHead(this, "Player2", 300, 500);
-            players.add(player2);
+            Globals.players.add(player2);
         } else {
             player1 = new SnakeHead(this, "Player1", 500, 500);
         }
 
-        players.add(player1);
+        Globals.players.add(player1);
 
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
+        new SimpleEnemy(this, Globals.players);
+        new SimpleEnemy(this, Globals.players);
+        new SimpleEnemy(this, Globals.players);
+        new SimpleEnemy(this, Globals.players);
 
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
+        Globals.currentGame = this;
+        Globals.spawnController = new SpawnController(this);
     }
 
 
@@ -65,4 +68,5 @@ public class Game extends Pane {
         Globals.gameLoop = new GameLoop();
         Globals.gameLoop.start();
     }
+
 }
