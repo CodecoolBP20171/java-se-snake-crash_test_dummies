@@ -24,6 +24,8 @@ public class Globals {
     public static Image p2snakeBody = new Image("p2_snake_body.png");
     public static Image simpleEnemy = new Image("simple_enemy.png");
     public static Image powerupBerry = new Image("powerup_berry.png");
+    public static Image powerupHealth = new Image("powerup_health.png");
+    public static Image powerupSpeed = new Image("powerup_speed.png");
     //.. put here the other images you want to use
 
     public static boolean coop = true;
