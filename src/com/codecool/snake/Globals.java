@@ -15,6 +15,7 @@ public class Globals {
     public static final double WINDOW_WIDTH = Screen.getPrimary().getVisualBounds().getWidth();
     public static final double WINDOW_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight();
 
+
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");
     public static Image simpleEnemy = new Image("simple_enemy.png");
