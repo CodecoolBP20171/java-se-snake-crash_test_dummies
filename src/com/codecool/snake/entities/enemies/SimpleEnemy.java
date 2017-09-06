@@ -34,7 +34,9 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
     @Override
     public void step() {
-        if (isOutOfBounds()) {
+        int height = (int) Globals.simpleEnemy.getHeight();
+        int width = (int) Globals.simpleEnemy.getWidth();
+        if (isOutOfBounds(width, height)) {
             destroy();
         }
         setX(getX() + heading.getX());
