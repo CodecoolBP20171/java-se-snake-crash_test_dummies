@@ -15,6 +15,8 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     private String playerName;
+    private int imageWidth;
+    private int imageHeight;
 
     public SnakeHead(Pane pane, String playerName, int xc, int yc) {
         super(pane);
@@ -25,8 +27,13 @@ public class SnakeHead extends GameEntity implements Animatable {
         this.playerName = playerName;
         if (this.playerName.equals("Player1")) {
             setImage(Globals.p1snakeHead);
+            this.imageHeight = (int) Globals.p1snakeHead.getHeight();
+            this.imageWidth = (int) Globals.p1snakeHead.getWidth();
         } else {
             setImage(Globals.p2snakeHead);
+            this.imageHeight = (int) Globals.p2snakeHead.getHeight();
+            this.imageWidth = (int) Globals.p2snakeHead.getWidth();
+
         }
         pane.getChildren().add(this);
 
@@ -80,8 +87,21 @@ public class SnakeHead extends GameEntity implements Animatable {
             }
         }
 
+        if (isOutOfBounds(imageWidth, imageHeight)) {
+            System.out.println("out of bounds");
+            if(getX() >= Globals.WINDOW_WIDTH) {
+                setX(-1 * imageWidth + heading.getX());
+            } else if (getX() <= -1 * imageWidth) {
+                setX(Globals.WINDOW_WIDTH + heading.getX());
+            } else if (getY() >= Globals.WINDOW_HEIGHT) {
+                setY(-1 * imageHeight + heading.getY());
+            } else if (getY() <= -1 * imageHeight) {
+                setY(Globals.WINDOW_HEIGHT + heading.getY());
+            }
+        }
+
         // check for game over condition
-        if (isOutOfBounds() || health <= 0) {
+        if (health <= 0) {
             System.out.println("Game Over");
             Globals.gameLoop.stop();
         }
