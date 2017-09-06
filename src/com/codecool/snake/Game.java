@@ -10,15 +10,29 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game extends Pane {
 
     public Game() {
-        new SnakeHead(this, 500, 500);
+        List<SnakeHead> players = new ArrayList<>(2);
+        SnakeHead player1, player2;
 
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
+        if(Globals.coop) {
+            player1 = new SnakeHead(this, "Player1", 700, 500);
+            player2 = new SnakeHead(this, "Player2", 300, 500);
+            players.add(player2);
+        } else {
+            player1 = new SnakeHead(this, "Player1", 500, 500);
+        }
+
+        players.add(player1);
+
+        new SimpleEnemy(this, players);
+        new SimpleEnemy(this, players);
+        new SimpleEnemy(this, players);
+        new SimpleEnemy(this, players);
 
         new SimplePowerup(this);
         new SimplePowerup(this);
@@ -32,17 +46,19 @@ public class Game extends Pane {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
-                case LEFT:  Globals.leftKeyDown  = true; break;
-                case RIGHT: Globals.rightKeyDown  = true; break;
-                case R: Globals.rKeyDown = true; break;
+                case LEFT:  Globals.player1Left  = true; break;
+                case RIGHT: Globals.player1Right  = true; break;
+                case Q:  Globals.player2Left  = true; break;
+                case W: Globals.player2Right  = true; break;
             }
         });
 
         scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
-                case LEFT:  Globals.leftKeyDown  = false; break;
-                case RIGHT: Globals.rightKeyDown  = false; break;
-                case R: Globals.rKeyDown = false; break;
+                case LEFT:  Globals.player1Left  = false; break;
+                case RIGHT: Globals.player1Right  = false; break;
+                case Q:  Globals.player2Left  = false; break;
+                case W: Globals.player2Right  = false; break;
             }
         });
 
