@@ -52,13 +52,13 @@ public class Main extends Application {
         logo.setX(Globals.WINDOW_WIDTH*0.06+120);
         logo.setY(Globals.WINDOW_HEIGHT-130);
 
-        Label devlopedBy = new Label("Developed by ");
-        devlopedBy.setId("devel");
-        //devlopedBy.setLayoutX();
-        devlopedBy.setLayoutX(Globals.WINDOW_WIDTH*0.06);
-        devlopedBy.setLayoutY(Globals.WINDOW_HEIGHT-80);
+        Label developedBy = new Label("Developed by ");
+        developedBy.setId("devel");
+      
+        developedBy.setLayoutX(Globals.WINDOW_WIDTH*0.06);
+        developedBy.setLayoutY(Globals.WINDOW_HEIGHT-80);
 
-        gridSplash.getChildren().addAll(buttonOnePlayer, buttonTwoPlayer, logo, devlopedBy);
+        gridSplash.getChildren().addAll(buttonOnePlayer, buttonTwoPlayer, logo, developedBy);
         gridSplash.getStylesheets().add("css/splash.css");
 
         Scene splashScene = new Scene(gridSplash, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
