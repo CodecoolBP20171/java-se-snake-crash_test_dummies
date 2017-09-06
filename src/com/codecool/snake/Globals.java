@@ -7,13 +7,15 @@ import javafx.scene.image.Image;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.stage.Screen;
 
 
 // class for holding all static stuff
 public class Globals {
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = Screen.getPrimary().getVisualBounds().getWidth();
+    public static final double WINDOW_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight();
+
 
     public static final short PLAYER_SPRITE_SIZE = 30;
     public static final short SPAWN_CLEARANCE_MULTIPLIER = 6;

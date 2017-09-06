@@ -3,7 +3,11 @@ package com.codecool.snake;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
@@ -36,6 +40,8 @@ public class Game extends Pane {
         new SimplePowerup(this);
     }
 
+
+
     public void start() {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> {
@@ -53,7 +59,6 @@ public class Game extends Pane {
                 case RIGHT: Globals.player1Right  = false; break;
                 case Q:  Globals.player2Left  = false; break;
                 case W: Globals.player2Right  = false; break;
-
             }
         });
 
