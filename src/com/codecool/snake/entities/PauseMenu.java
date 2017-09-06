@@ -5,11 +5,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class PauseMenu {
+
     public static void display() {
         Stage window = new Stage();
         window.setWidth(300);
@@ -25,10 +27,27 @@ public class PauseMenu {
             Globals.gameLoop.start();
         });
 
-        VBox layout = new VBox(75);
-        layout.setAlignment(Pos.CENTER);
-        layout.getChildren().addAll(text, resumeButton);
-        window.setScene(new Scene(layout));
+        Button restartButton = new Button("Restart game");
+        restartButton.setOnMouseClicked(e -> {
+            window.close();
+            Globals.paused = false;
+            Globals.window.setScene(Globals.splashScene);
+        });
+
+        VBox layout = new VBox(25);
+        Scene pauseScene = new Scene(layout);
+
+        pauseScene.setOnKeyReleased(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                window.close();
+                Globals.paused = false;
+                Globals.gameLoop.start();
+            }
+        });
+
+        layout.setAlignment(Pos.BASELINE_CENTER);
+        layout.getChildren().addAll(text, restartButton, resumeButton);
+        window.setScene(pauseScene);
         window.show();
     }
 }

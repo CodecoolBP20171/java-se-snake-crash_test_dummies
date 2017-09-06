@@ -2,12 +2,14 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 
 // class for holding all static stuff
@@ -15,7 +17,8 @@ public class Globals {
 
     public static final double WINDOW_WIDTH = Screen.getPrimary().getVisualBounds().getWidth();
     public static final double WINDOW_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight();
-
+    public static Stage window;
+    public static Scene splashScene;
 
     public static final short PLAYER_SPRITE_SIZE = 30;
     public static final short SPAWN_CLEARANCE_MULTIPLIER = 6;
@@ -30,7 +33,8 @@ public class Globals {
     public static Image powerupSpeed = new Image("powerup_speed.png");
     //.. put here the other images you want to use
 
-    public static boolean coop = true;
+    public static boolean coop = false;
+    public static boolean paused = false;
     public static boolean player1Left;
     public static boolean player1Right;
     public static boolean player2Left;

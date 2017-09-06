@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 
 public class Main extends Application {
 
+    public Stage window;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -19,9 +21,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
 
         primaryStage.setTitle("Snake Game by Crash Test Dummies");
+        window = primaryStage;
 
-        Game game = new Game();
-        Scene gameScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
 
         Pane gridSplash = new Pane();
 
@@ -30,21 +31,29 @@ public class Main extends Application {
         buttonOnePlayer.setLayoutY(Globals.WINDOW_HEIGHT*0.15);
 
         buttonOnePlayer.setOnAction(e -> {
-                    primaryStage.setScene(gameScene);
-                    game.start();
-                }
+            Globals.coop = false;
+            Game game = new Game();
+            Scene gameScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+            primaryStage.setScene(gameScene);
+            Globals.window = primaryStage;
+            game.start();
+            }
         );
 
         Button buttonTwoPlayer = new Button("Start two Player mode");
         buttonTwoPlayer.setLayoutX(Globals.WINDOW_WIDTH*0.06);
         buttonTwoPlayer.setLayoutY(Globals.WINDOW_HEIGHT*0.15+100);
 
-        /*buttonTwoPlayerPlayer.setOnAction(e -> {
-                    Globals.coop = true;
-                    primaryStage.setScene(gameScene);
-                    game.start();
-                }
-        );*/
+        buttonTwoPlayer.setOnAction(e -> {
+            Globals.coop = true;
+            Game game = new Game();
+            Scene gameScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+            primaryStage.setScene(gameScene);
+            Globals.window = primaryStage;
+            game.start();
+            System.out.println("Coop: " + Globals.coop);
+            }
+        );
 
         ImageView logo = new ImageView(new Image("logo.png"));
         logo.setFitWidth(logo.getImage().getWidth()/5);
@@ -61,9 +70,9 @@ public class Main extends Application {
         gridSplash.getChildren().addAll(buttonOnePlayer, buttonTwoPlayer, logo, developedBy);
         gridSplash.getStylesheets().add("css/splash.css");
 
-        Scene splashScene = new Scene(gridSplash, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+        Globals.splashScene = new Scene(gridSplash, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
 
-        primaryStage.setScene(splashScene);
+        primaryStage.setScene(Globals.splashScene);
         primaryStage.show();
     }
 }
