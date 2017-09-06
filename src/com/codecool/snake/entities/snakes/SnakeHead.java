@@ -1,6 +1,5 @@
 package com.codecool.snake.entities.snakes;
 
-import com.codecool.snake.Main;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -94,10 +93,6 @@ public class SnakeHead extends GameEntity implements Animatable {
                     }
                 }
             }
-        }
-        if (Globals.rKeyDown) {
-            //Globals.rKeyDown = true;
-            Globals.gameLoop.start();
         }
 
         if (isOutOfBounds(imageWidth, imageHeight)) {
