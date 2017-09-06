@@ -9,7 +9,10 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
+import java.util.List;
 import java.util.Random;
+
+import static com.codecool.snake.Globals.SPAWN_CLEARANCE_MULTIPLIER;
 
 // a simple enemy TODO make better ones.
 public class SimpleEnemy extends GameEntity implements Animatable, Interactable {
@@ -17,15 +20,34 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
     private Point2D heading;
     private static final int damage = 10;
 
-    public SimpleEnemy(Pane pane) {
+    public SimpleEnemy(Pane pane, List<SnakeHead> players) {
         super(pane);
 
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
         int speed = 1;
         Random rnd = new Random();
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        boolean locationIsOccupied = true;
+        while (locationIsOccupied) {
+            double newX = rnd.nextDouble() * Globals.WINDOW_WIDTH;
+            double newY = rnd.nextDouble() * Globals.WINDOW_HEIGHT;
+
+            for (SnakeHead player : players) {
+                if (
+                        newX > player.getX() - (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
+                        newX < player.getX() + (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
+                        newY > player.getY() - (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
+                        newY < player.getY() + (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER)
+                ) {
+                    locationIsOccupied = true;
+                    break;
+                } else {
+                    setX(newX);
+                    setY(newY);
+                    locationIsOccupied = false;
+                }
+            }
+        }
 
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
