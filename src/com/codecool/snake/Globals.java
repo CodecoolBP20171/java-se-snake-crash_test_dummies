@@ -52,8 +52,6 @@ public class Globals {
     public static Map<String, Integer> scores = new HashMap<>();
     public static List<SnakeHead> players = new ArrayList<>(2);
 
-    public static List<SnakeHead> players;
-
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.

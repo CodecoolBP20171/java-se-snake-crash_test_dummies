@@ -62,14 +62,6 @@ public class SpawnController extends GameEntity implements Animatable {
         } else {
             powerupTimer--;
         }
-
-        if (enemyTimer == 0) {
-            new SimpleEnemy(Globals.currentGame, Globals.players);
-            enemyTimer = ENEMY_SPAWN_INTERVAL;
-        } else {
-            --enemyTimer;
-        }
-
     }
     public boolean isUnderPowerupCap() {
         int powerupSum = HealthPowerup.counter + SpeedPowerup.counter + SimplePowerup.counter;
