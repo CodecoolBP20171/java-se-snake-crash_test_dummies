@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 public class Game extends Pane {
 
     public Game() {
+        Globals.gameOver = false;
 
         if(Globals.coop) {
             Globals.players.add(new SnakeHead(this, "Player1", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2));

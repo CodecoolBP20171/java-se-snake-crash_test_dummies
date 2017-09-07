@@ -12,6 +12,7 @@ public class SpeedPowerup extends GameEntity implements Interactable {
 
     private static final float SPEED = 2.5f;
     private static final int SPEED_BUFF_TIMER = 180;
+    public static final int SCORE_AMOUNT = 2500;
 
     public SpeedPowerup(Pane pane) {
         super(pane);
@@ -28,6 +29,7 @@ public class SpeedPowerup extends GameEntity implements Interactable {
     public void apply(SnakeHead snakeHead) {
         snakeHead.changeSpeed(SPEED);
         snakeHead.setSpeedBuffTimer(SPEED_BUFF_TIMER);
+        snakeHead.addToScore(SCORE_AMOUNT);
         destroy();
     }
 
