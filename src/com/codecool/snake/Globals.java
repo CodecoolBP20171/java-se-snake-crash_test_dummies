@@ -39,10 +39,12 @@ public class Globals {
 
     public static boolean coop = false;
     public static boolean paused = false;
+    public static boolean gameOver = false;
     public static boolean player1Left;
     public static boolean player1Right;
     public static boolean player2Left;
     public static boolean player2Right;
+    public static Map<String, Integer> scores = new HashMap<>();
     public static List<SnakeHead> players = new ArrayList<>(2);
 
     public static List<GameEntity> gameObjects;
@@ -50,6 +52,7 @@ public class Globals {
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
     public static MobSpawner mobSpawner;
+    public static Scene gameOverScene;
 
     static {
         gameObjects = new LinkedList<>();
@@ -67,5 +70,9 @@ public class Globals {
 
     public static List<GameEntity> getGameObjects() {
         return Collections.unmodifiableList(gameObjects);
+    }
+
+    public static void clearGameObjects() {
+        gameObjects.clear();
     }
 }

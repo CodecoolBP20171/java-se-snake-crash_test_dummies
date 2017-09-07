@@ -37,6 +37,7 @@ public class PauseMenu {
             }
             Globals.players.clear();
             Globals.paused = false;
+            Globals.clearGameObjects();
             Globals.window.setScene(Globals.splashScene);
             window.close();
         });
