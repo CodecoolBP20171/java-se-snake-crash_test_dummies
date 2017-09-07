@@ -10,7 +10,6 @@ import java.util.Random;
 public class CirclingEnemy extends AbstractEnemy implements Animatable {
     private static final float TURN_RATE = 1.75f;
     private static final double SPEED = 2.1;
-    private static final int SPAWN_CONSTRAINT = 150;
 
     private Direction turnDirection;
 
