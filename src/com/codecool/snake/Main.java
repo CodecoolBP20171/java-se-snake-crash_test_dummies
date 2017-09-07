@@ -1,23 +1,10 @@
 package com.codecool.snake;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-public class Main extends Application {
-
+public class Main {
     public static void main(String[] args) {
-        launch(args);
+        System.setProperty("quantum.multithreaded", "false");
+        Application.launch(Snake.class, args);
     }
-
-    @Override
-    public void start(Stage primaryStage) {
-        Game game = new Game();
-
-        primaryStage.setTitle("Snake Game");
-        primaryStage.setScene(new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
-        primaryStage.show();
-        game.start();
-    }
-
 }

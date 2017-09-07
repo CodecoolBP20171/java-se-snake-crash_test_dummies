@@ -1,0 +1,11 @@
+.root {
+    -fx-background-image: url("game_bg.jpg");
+    -fx-background-size: cover;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
