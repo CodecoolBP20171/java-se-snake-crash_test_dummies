@@ -13,7 +13,7 @@ public class CirclingEnemy extends AbstractEnemy implements Animatable {
     private Direction turnDirection;
 
     public CirclingEnemy(Pane pane) {
-        super(pane, Globals.simpleEnemy);   // TODO create custom image for circling enemy
+        super(pane, Globals.circlingEnemy);
         this.heading = Utils.directionToVector(getRotate(), SPEED);
 
         Random rnd = new Random();

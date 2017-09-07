@@ -15,7 +15,7 @@ public class FollowingEnemy extends AbstractEnemy implements Animatable{
     private static final float TURN_RATE = 10;
 
     public FollowingEnemy(Pane pane) {
-        super(pane, Globals.simpleEnemy); // TODO add custom texture
+        super(pane, Globals.followingEnemy);
         this.heading = Utils.directionToVector(getRotate(), SPEED);
     }
 
