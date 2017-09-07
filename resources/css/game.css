@@ -1,3 +1,7 @@
+.root {
+    -fx-background-image: url("game_bg.jpg");
+}
+
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
