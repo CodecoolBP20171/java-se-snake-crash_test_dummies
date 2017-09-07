@@ -26,8 +26,9 @@ public class SnakeHead extends GameEntity implements Animatable {
         super(pane);
         setX(xc);
         setY(yc);
-        health = 100;
         score = 0;
+        this.health = 100;
+
         tail = this;
         this.playerName = playerName;
         if (this.playerName.equals("Player1")) {
@@ -38,8 +39,8 @@ public class SnakeHead extends GameEntity implements Animatable {
             setImage(Globals.p2snakeHead);
             this.imageHeight = (int) Globals.p2snakeHead.getHeight();
             this.imageWidth = (int) Globals.p2snakeHead.getWidth();
-
         }
+
         pane.getChildren().add(this);
         addPart(4);
     }
@@ -148,7 +149,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     }
 
     public void changeHealth(int diff) {
-        health += diff;
+        this.health += diff;
     }
 
     public void updateScores() {

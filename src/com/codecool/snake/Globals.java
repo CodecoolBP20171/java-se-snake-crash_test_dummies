@@ -4,9 +4,7 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-
 import java.util.*;
-
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -27,6 +25,8 @@ public class Globals {
     public static Image p2snakeHead = new Image("p2_snake_head.png");
     public static Image p2snakeBody = new Image("p2_snake_body.png");
     public static Image simpleEnemy = new Image("simple_enemy.png");
+    public static Image circlingEnemy = new Image("circling_enemy.png");
+    public static Image followingEnemy = new Image("following_enemy.png");
     public static Image powerupBerry = new Image("powerup_berry.png");
     public static Image powerupHealth = new Image("powerup_health.png");
     public static Image powerupSpeed = new Image("powerup_speed.png");
@@ -40,6 +40,7 @@ public class Globals {
     public static boolean player2Left;
     public static boolean player2Right;
     public static Map<String, Integer> scores = new HashMap<>();
+    public static List<SnakeHead> players = new ArrayList<>(2);
 
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
