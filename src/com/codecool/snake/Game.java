@@ -17,14 +17,13 @@ public class Game extends Pane {
         SnakeHead player1, player2;
 
         if(Globals.coop) {
-            player1 = new SnakeHead(this, "Player1", 300, 500);
-            player2 = new SnakeHead(this, "Player2", 700, 500);
+            player1 = new SnakeHead(this, "Player1", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2);
+            player2 = new SnakeHead(this, "Player2", (int)Globals.WINDOW_WIDTH/3, (int)Globals.WINDOW_HEIGHT/2);
             players.add(player2);
             new DisplayHealth(this, player1);
             new DisplayHealth(this, player2);
         } else {
-            player1 = new SnakeHead(this, "Player1", 500, 500);
-            new DisplayHealth(this, player1);
+            player1 = new SnakeHead(this, "Player1", (int)Globals.WINDOW_WIDTH/2, (int)Globals.WINDOW_HEIGHT/2);
         }
 
         players.add(player1);
@@ -59,6 +58,7 @@ public class Game extends Pane {
                 case RIGHT: Globals.player1Right  = false; break;
                 case Q:  Globals.player2Left  = false; break;
                 case W: Globals.player2Right  = false; break;
+                case ESCAPE: Globals.paused = !Globals.paused; break;
             }
         });
 
