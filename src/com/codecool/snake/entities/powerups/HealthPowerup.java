@@ -12,6 +12,7 @@ public class HealthPowerup extends GameEntity implements Interactable {
 
     private static final int healAmount = 10;
     public static int counter = 0;
+    public static final int SCORE_AMOUNT = 1000;
 
     public HealthPowerup(Pane pane) {
         super(pane);
@@ -28,6 +29,7 @@ public class HealthPowerup extends GameEntity implements Interactable {
     public void apply(SnakeHead snakeHead) {
         if (snakeHead.getHealth() <= 90) {
             snakeHead.changeHealth(healAmount);
+            snakeHead.addToScore(SCORE_AMOUNT);
         }
         counter--;
         destroy();

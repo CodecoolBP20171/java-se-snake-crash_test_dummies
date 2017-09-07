@@ -1,39 +1,33 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.SpawnController;
+import com.codecool.snake.entities.enemies.CirclingEnemy;
+import com.codecool.snake.entities.enemies.MobSpawner;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.geometry.Insets;
+import com.codecool.snake.entities.stats.DisplayHealth;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Game extends Pane {
 
     public Game() {
-        Globals.players = new ArrayList<>(2);
-        SnakeHead player1, player2;
+        Globals.gameOver = false;
+        Globals.players.clear();
 
         if(Globals.coop) {
-            player1 = new SnakeHead(this, "Player1", 700, 500);
-            player2 = new SnakeHead(this, "Player2", 300, 500);
-            Globals.players.add(player2);
+            Globals.players.add(new SnakeHead(this, "Player1", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2));
+            Globals.players.add(new SnakeHead(this, "Player2", (int)Globals.WINDOW_WIDTH/3, (int)Globals.WINDOW_HEIGHT/2));
+            new DisplayHealth(this, Globals.players.get(0));
+            new DisplayHealth(this, Globals.players.get(1));
         } else {
-            player1 = new SnakeHead(this, "Player1", 500, 500);
+            Globals.players.add(new SnakeHead(this, "Player1", (int)Globals.WINDOW_WIDTH/2, (int)Globals.WINDOW_HEIGHT/2));
+            new DisplayHealth(this, Globals.players.get(0));
         }
 
-        Globals.players.add(player1);
-
-        new SimpleEnemy(this, Globals.players);
-        new SimpleEnemy(this, Globals.players);
-        new SimpleEnemy(this, Globals.players);
-        new SimpleEnemy(this, Globals.players);
+        Globals.mobSpawner = new MobSpawner(this);
 
         new SimplePowerup(this);
         new SimplePowerup(this);
@@ -62,6 +56,7 @@ public class Game extends Pane {
                 case RIGHT: Globals.player1Right  = false; break;
                 case Q:  Globals.player2Left  = false; break;
                 case W: Globals.player2Right  = false; break;
+                case ESCAPE: Globals.paused = !Globals.paused; break;
             }
         });
 

@@ -1,0 +1,25 @@
+.root{
+    -fx-background-color: #f48f42;
+    -fx-background-image: url("gameover_bg.jpg");
+    -fx-background-size: cover;
+    -fx-font-family: fantasy;
+}
+
+.button {
+    -fx-border-insets: 100px;
+    -fx-background-color: #f48f42;
+    -fx-padding: 25px;
+    -fx-text-fill: white;
+    -fx-border-style: none;
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+
+}
+
+.label {
+    -fx-border-insets: 100px;
+    -fx-text-fill: black;
+    -fx-font-size: 70px;
+    -fx-font-weight: bold;
+
+}

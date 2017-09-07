@@ -12,6 +12,7 @@ import java.util.Random;
 public class SimplePowerup extends GameEntity implements Interactable {
 
     public static int counter = 0;
+    public static final int SCORE_AMOUNT = 5000;
 
     public SimplePowerup(Pane pane) {
         super(pane);
@@ -29,6 +30,7 @@ public class SimplePowerup extends GameEntity implements Interactable {
     public void apply(SnakeHead snakeHead) {
         snakeHead.addPart(4);
         counter--;
+        snakeHead.addToScore(SCORE_AMOUNT);
         destroy();
     }
 
