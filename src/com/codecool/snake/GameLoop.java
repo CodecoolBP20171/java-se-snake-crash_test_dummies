@@ -18,10 +18,7 @@ public class GameLoop extends AnimationTimer {
         if(!Globals.gameOver) {
 
             if (Globals.paused) {
-                Globals.player2Right = false;
-                Globals.player2Left = false;
-                Globals.player1Right = false;
-                Globals.player1Left = false;
+                resetControlBooleans();
                 PauseMenu.display();
                 Globals.gameLoop.stop();
             } else {
@@ -53,9 +50,17 @@ public class GameLoop extends AnimationTimer {
         } else {
             System.out.println("scores: "+Globals.scores);
             System.out.println("Game over!");
+            resetControlBooleans();
             GameOverScreen.display();
             Globals.gameLoop.stop();
         }
 
+    }
+
+    public void resetControlBooleans() {
+        Globals.player2Right = false;
+        Globals.player2Left = false;
+        Globals.player1Right = false;
+        Globals.player1Left = false;
     }
 }
