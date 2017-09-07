@@ -3,75 +3,57 @@ package com.codecool.snake.entities.enemies;
 import com.codecool.snake.Globals;
 import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Animatable;
-import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.Interactable;
-import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
-public class CirclingEnemy extends GameEntity implements Animatable, Interactable {
-    private static final int DAMAGE = 10;
+public class CirclingEnemy extends AbstractEnemy implements Animatable {
     private static final float TURN_RATE = 1.75f;
-    private static final double DEFAULT_SPEED = 2.1;
+    private static final double SPEED = 2.1;
     private static final int SPAWN_CONSTRAINT = 150;
 
-    private Direction turningDirection;
-    private Point2D heading;
+    private Direction turnDirection;
 
     public CirclingEnemy(Pane pane) {
-        super(pane);
+        super(pane, Globals.simpleEnemy);   // TODO create custom image for circling enemy
+        this.heading = Utils.directionToVector(getRotate(), SPEED);
 
-        setImage(Globals.simpleEnemy); // TODO create custom image for circling enemy
-        pane.getChildren().add(this);
         Random rnd = new Random();
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
-        // TODO calculate the enemy circle's origin point and if that point is closer
-        // TODO     to the border than the radius of the circle, move it in by that much.
-        if (getX() < SPAWN_CONSTRAINT) {
-            setX(SPAWN_CONSTRAINT);
-        } else if (getX() > Globals.WINDOW_WIDTH - SPAWN_CONSTRAINT) {
-            setX(Globals.WINDOW_WIDTH - SPAWN_CONSTRAINT);
-        }
-        if (getY() < SPAWN_CONSTRAINT) {
-            setY(SPAWN_CONSTRAINT);
-        } else if (getY() > Globals.WINDOW_HEIGHT - SPAWN_CONSTRAINT) {
-            setY(Globals.WINDOW_HEIGHT - SPAWN_CONSTRAINT);
-        }
+        if (rnd.nextInt(2) == 0) { turnDirection = Direction.LEFT;
+        } else { turnDirection = Direction.RIGHT; }
+    }
 
-        // Choose turning direction
-        if (rnd.nextInt(2) == 0) { turningDirection = Direction.LEFT;
-        } else { turningDirection = Direction.RIGHT; }
-
-        double direction = rnd.nextDouble() * 360;
-        setRotate(direction);
-        heading = Utils.directionToVector(direction, DEFAULT_SPEED);
+    private void changeDirection() {
+        if (turnDirection == Direction.LEFT) {
+            turnDirection = Direction.RIGHT;
+        } else {
+            turnDirection = Direction.LEFT;
+        }
     }
 
     @Override
     public void step() {
+        if (isOutOfBounds()) {
+            destroy();
+            return;
+        }
+
+        Random rnd = new Random();
+        if (rnd.nextInt(421) == 0) {   // 0,0023% chance of turning
+            changeDirection();
+        }
+
         double direction = getRotate();
-        if (turningDirection == Direction.LEFT) {
+        if (this.turnDirection == Direction.LEFT) {
             direction -= TURN_RATE;
         } else {
             direction += TURN_RATE;
         }
         setRotate(direction);
-        heading = Utils.directionToVector(direction, DEFAULT_SPEED);
+        heading = Utils.directionToVector(direction, SPEED);
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
-
-    @Override
-    public void apply(SnakeHead player) {
-        player.changeHealth(-DAMAGE);
-        destroy();
-    }
-
-    @Override
-    public String getMessage() { return String.format("%s damage", DAMAGE); }
 
     private enum Direction {
         LEFT, RIGHT
