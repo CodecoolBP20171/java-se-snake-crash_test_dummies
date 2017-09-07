@@ -1,7 +1,6 @@
 package com.codecool.snake.entities;
 
 import com.codecool.snake.Globals;
-import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.HealthPowerup;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.powerups.SpeedPowerup;
@@ -9,7 +8,6 @@ import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class SpawnController extends GameEntity implements Animatable {
     
@@ -41,9 +39,8 @@ public class SpawnController extends GameEntity implements Animatable {
 
     @Override
     public void step() {
-        Random randomizer = new Random();
         if (powerupTimer == 0 && isUnderPowerupCap()) {
-            String choice = roll.get(randomizer.nextInt(100));
+            String choice = roll.get(Globals.RND.nextInt(100));
 
             if (choice.equals("health") && isUnderPowerupCap()) {
                 new HealthPowerup(Globals.currentGame);
@@ -52,9 +49,9 @@ public class SpawnController extends GameEntity implements Animatable {
             } else if (choice.equals("length") && isUnderPowerupCap()) {
                 new SimplePowerup(Globals.currentGame);
             }
-            powerupTimer = randomizer.nextInt(POWERUP_TIMER_MAX-POWERUP_TIMER_MIN) + POWERUP_TIMER_MIN;
+            powerupTimer = Globals.RND.nextInt(POWERUP_TIMER_MAX-POWERUP_TIMER_MIN) + POWERUP_TIMER_MIN;
         } else if (powerupTimer == 0) {
-            powerupTimer = randomizer.nextInt(POWERUP_TIMER_MAX-POWERUP_TIMER_MIN) + POWERUP_TIMER_MIN;
+            powerupTimer = Globals.RND.nextInt(POWERUP_TIMER_MAX-POWERUP_TIMER_MIN) + POWERUP_TIMER_MIN;
         } else {
             powerupTimer--;
         }
