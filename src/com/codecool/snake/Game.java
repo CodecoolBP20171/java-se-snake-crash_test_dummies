@@ -30,10 +30,10 @@ public class Game extends Pane {
 
         players.add(player1);
 
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
+        new SimpleEnemy(this);
+        new SimpleEnemy(this);
+        new CirclingEnemy(this);
+        new CirclingEnemy(this);
 
         new SimplePowerup(this);
         new SimplePowerup(this);

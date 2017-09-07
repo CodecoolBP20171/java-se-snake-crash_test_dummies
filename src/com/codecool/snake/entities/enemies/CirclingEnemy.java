@@ -10,7 +10,6 @@ import java.util.Random;
 public class CirclingEnemy extends AbstractEnemy implements Animatable {
     private static final float TURN_RATE = 1.75f;
     private static final double SPEED = 2.1;
-
     private Direction turnDirection;
 
     public CirclingEnemy(Pane pane) {
@@ -32,7 +31,7 @@ public class CirclingEnemy extends AbstractEnemy implements Animatable {
 
     @Override
     public void step() {
-        if (isOutOfBounds()) {
+        if (isOutOfBounds((int)Globals.simpleEnemy.getWidth(), (int)Globals.simpleEnemy.getHeight())) {
             destroy();
             return;
         }
