@@ -3,11 +3,8 @@ package com.codecool.snake;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import javafx.geometry.Insets;
+import com.codecool.snake.entities.stats.DisplayHealth;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
@@ -20,11 +17,14 @@ public class Game extends Pane {
         SnakeHead player1, player2;
 
         if(Globals.coop) {
-            player1 = new SnakeHead(this, "Player1", 700, 500);
-            player2 = new SnakeHead(this, "Player2", 300, 500);
+            player1 = new SnakeHead(this, "Player1", 300, 500);
+            player2 = new SnakeHead(this, "Player2", 700, 500);
             players.add(player2);
+            new DisplayHealth(this, player1);
+            new DisplayHealth(this, player2);
         } else {
             player1 = new SnakeHead(this, "Player1", 500, 500);
+            new DisplayHealth(this, player1);
         }
 
         players.add(player1);
