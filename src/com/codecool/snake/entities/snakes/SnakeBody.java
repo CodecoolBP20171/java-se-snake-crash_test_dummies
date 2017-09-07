@@ -1,5 +1,6 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.Game;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -15,7 +16,7 @@ import java.util.Queue;
 public class SnakeBody extends GameEntity implements Animatable, Interactable {
 
     private GameEntity parent;
-    private Queue<Vec2d> history = new LinkedList<>();
+    public Queue<Vec2d> history = new LinkedList<>();
     private static final int historySize = 10;
     private String playerName;
 
@@ -57,7 +58,18 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
     @Override
     public void apply(SnakeHead snakeHead){
         if (!snakeHead.getPlayerName().equals(this.getPlayerName())){
-            Globals.gameLoop.stop();
+            snakeHead.destroy();
+
+            for (GameEntity entity: Globals.gameObjects) {
+                if (entity instanceof SnakeBody) {
+                    SnakeBody snakeBody = (SnakeBody) entity;
+                    if (snakeBody.getPlayerName().equals(snakeHead.getPlayerName())) {
+                        snakeBody.destroy();
+                    }
+                }
+            }
+
+            // Globals.gameLoop.stop();
         }
     }
 
