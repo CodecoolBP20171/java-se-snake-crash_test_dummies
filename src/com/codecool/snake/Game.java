@@ -24,6 +24,7 @@ public class Game extends Pane {
             new DisplayHealth(this, player2);
         } else {
             player1 = new SnakeHead(this, "Player1", (int)Globals.WINDOW_WIDTH/2, (int)Globals.WINDOW_HEIGHT/2);
+            new DisplayHealth(this, player1);
         }
 
         players.add(player1);

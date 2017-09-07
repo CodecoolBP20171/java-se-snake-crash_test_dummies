@@ -23,9 +23,9 @@ public class Main extends Application {
         primaryStage.setTitle("Snake Game by Crash Test Dummies");
         window = primaryStage;
 
-        Game game = new Game();
-        Scene gameScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
-        gameScene.getStylesheets().add("css/game.css");
+//        Game game = new Game();
+//        Scene gameScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+//        gameScene.getStylesheets().add("css/game.css");
 
         Pane gridSplash = new Pane();
 
@@ -37,6 +37,7 @@ public class Main extends Application {
             Globals.coop = false;
             Game game = new Game();
             Scene gameScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+            gameScene.getStylesheets().add("css/game.css");
             primaryStage.setScene(gameScene);
             Globals.window = primaryStage;
             game.start();
@@ -51,6 +52,7 @@ public class Main extends Application {
             Globals.coop = true;
             Game game = new Game();
             Scene gameScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+            gameScene.getStylesheets().add("css/game.css");
             primaryStage.setScene(gameScene);
             Globals.window = primaryStage;
             game.start();
