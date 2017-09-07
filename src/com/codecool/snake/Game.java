@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.CirclingEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -29,10 +30,10 @@ public class Game extends Pane {
 
         players.add(player1);
 
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
-        new SimpleEnemy(this, players);
+        new SimpleEnemy(this);
+        new SimpleEnemy(this);
+        new CirclingEnemy(this);
+        new CirclingEnemy(this);
 
         new SimplePowerup(this);
         new SimplePowerup(this);
