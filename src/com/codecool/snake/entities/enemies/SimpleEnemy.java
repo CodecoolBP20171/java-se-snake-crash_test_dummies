@@ -6,7 +6,6 @@ import com.codecool.snake.Utils;
 import javafx.geometry.Point2D;
 import javafx.scene.layout.Pane;
 
-
 public class SimpleEnemy extends AbstractEnemy implements Animatable {
 
     private static final int SPEED = 2;
