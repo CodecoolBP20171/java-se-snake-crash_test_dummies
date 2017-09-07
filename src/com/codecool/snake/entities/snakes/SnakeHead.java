@@ -19,12 +19,15 @@ public class SnakeHead extends GameEntity implements Animatable {
     private String playerName;
     private int imageWidth;
     private int imageHeight;
+    private int score;
+
 
     public SnakeHead(Pane pane, String playerName, int xc, int yc) {
         super(pane);
         setX(xc);
         setY(yc);
         health = 100;
+        score = 0;
         tail = this;
         this.playerName = playerName;
         if (this.playerName.equals("Player1")) {
@@ -110,13 +113,31 @@ public class SnakeHead extends GameEntity implements Animatable {
 
         // check for game over condition
         if (health <= 0) {
-            System.out.println("Game Over");
-            Globals.gameLoop.stop();
+            updateScores();
+            removeTail();
+            destroy();
+
+
+        }
+    }
+
+    public void removeTail(){
+        for (GameEntity entity: Globals.gameObjects) {
+            if (entity instanceof SnakeBody) {
+                SnakeBody snakeBody = (SnakeBody) entity;
+                if (snakeBody.getPlayerName().equals(getPlayerName())) {
+                    snakeBody.destroy();
+                }
+            }
         }
     }
 
     public String getPlayerName() {
         return playerName;
+    }
+
+    public void addToScore(int addition){
+        this.score += addition;
     }
 
     public void addPart(int numParts) {
@@ -128,6 +149,10 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+    }
+
+    public void updateScores() {
+        Globals.scores.put(this.playerName, this.score);
     }
 
     public int getHealth() {

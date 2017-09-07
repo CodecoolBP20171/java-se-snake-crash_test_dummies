@@ -5,9 +5,8 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -35,15 +34,18 @@ public class Globals {
 
     public static boolean coop = false;
     public static boolean paused = false;
+    public static boolean gameOver = false;
     public static boolean player1Left;
     public static boolean player1Right;
     public static boolean player2Left;
     public static boolean player2Right;
+    public static Map<String, Integer> scores = new HashMap<>();
 
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
+    public static Scene gameOverScene;
 
     static {
         gameObjects = new LinkedList<>();

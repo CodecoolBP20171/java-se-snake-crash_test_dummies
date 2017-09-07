@@ -18,6 +18,7 @@ public class Game extends Pane {
     public Game() {
         List<SnakeHead> players = new ArrayList<>(2);
         SnakeHead player1, player2;
+        Globals.gameOver = false;
 
         if(Globals.coop) {
             player1 = new SnakeHead(this, "Player1", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2);
