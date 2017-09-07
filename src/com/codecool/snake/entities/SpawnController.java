@@ -12,10 +12,6 @@ import java.util.List;
 import java.util.Random;
 
 public class SpawnController extends GameEntity implements Animatable {
-
-    public static final int MAX_CONCURRENT_ENEMY_NR = 10;
-    public static final int ENEMY_SPAWN_INTERVAL = 100;
-    public static int enemyTimer = 0;
     
     public static final int HEALTH_POWERUP_CHANCE = 50;
     public static final int SPEED_POWERUP_CHANCE = 30;
