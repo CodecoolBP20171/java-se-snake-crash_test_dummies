@@ -1,6 +1,7 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.CirclingEnemy;
+import com.codecool.snake.entities.enemies.MobSpawner;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -25,10 +26,7 @@ public class Game extends Pane {
             new DisplayHealth(this, Globals.players.get(0));
         }
 
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new CirclingEnemy(this);
-        new CirclingEnemy(this);
+        Globals.mobSpawner = new MobSpawner(this);
 
         new SimplePowerup(this);
         new SimplePowerup(this);

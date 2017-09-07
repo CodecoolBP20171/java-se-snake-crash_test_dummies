@@ -52,4 +52,11 @@ public class FollowingEnemy extends AbstractEnemy implements Animatable{
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
     }
+
+    @Override
+    public void apply(SnakeHead player) {
+        player.changeHealth(-DAMAGE);
+        Globals.mobSpawner.decrementFollowingEnemyCounter();
+        destroy();
+    }
 }

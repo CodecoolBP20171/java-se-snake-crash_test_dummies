@@ -1,6 +1,9 @@
 package com.codecool.snake.entities;
 
 import com.codecool.snake.Globals;
+import com.codecool.snake.entities.enemies.*;
+import com.codecool.snake.entities.snakes.SnakeBody;
+import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +32,10 @@ public class PauseMenu {
 
         Button restartButton = new Button("Restart game");
         restartButton.setOnMouseClicked(e -> {
+            for (GameEntity entity : Globals.gameObjects) {
+                Globals.removeGameObject(entity);
+            }
+            Globals.players.clear();
             Globals.paused = false;
             Globals.clearGameObjects();
             Globals.window.setScene(Globals.splashScene);

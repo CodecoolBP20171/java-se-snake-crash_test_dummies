@@ -1,16 +1,21 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+import com.codecool.snake.entities.enemies.MobSpawner;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+
 import java.util.*;
+
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
 // class for holding all static stuff
 public class Globals {
+
+    public static final Random RND = new Random();
 
     public static final double WINDOW_WIDTH = Screen.getPrimary().getVisualBounds().getWidth();
     public static final double WINDOW_HEIGHT = Screen.getPrimary().getVisualBounds().getHeight();
@@ -46,6 +51,7 @@ public class Globals {
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
+    public static MobSpawner mobSpawner;
     public static Scene gameOverScene;
 
     static {
