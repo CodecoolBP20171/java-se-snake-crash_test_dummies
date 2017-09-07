@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.enemies.MobSpawner;
 import com.codecool.snake.entities.snakes.SnakeHead;
@@ -24,6 +25,10 @@ public class Globals {
 
     public static final short PLAYER_SPRITE_SIZE = 30;
     public static final short SPAWN_CLEARANCE_MULTIPLIER = 6;
+
+    public static Game currentGame;
+    public static Animatable spawnController;
+
 
     public static Image p1snakeHead = new Image("p1_snake_head.png");
     public static Image p1snakeBody = new Image("p1_snake_body.png");

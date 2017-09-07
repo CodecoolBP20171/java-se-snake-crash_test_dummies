@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.SpawnController;
 import com.codecool.snake.entities.enemies.CirclingEnemy;
 import com.codecool.snake.entities.enemies.MobSpawner;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
@@ -32,6 +33,8 @@ public class Game extends Pane {
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
+        Globals.currentGame = this;
+        Globals.spawnController = new SpawnController(this);
     }
 
 
@@ -60,4 +63,5 @@ public class Game extends Pane {
         Globals.gameLoop = new GameLoop();
         Globals.gameLoop.start();
     }
+
 }
