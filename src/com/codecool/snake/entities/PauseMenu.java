@@ -30,6 +30,7 @@ public class PauseMenu {
         Button restartButton = new Button("Restart game");
         restartButton.setOnMouseClicked(e -> {
             Globals.paused = false;
+            Globals.clearGameObjects();
             Globals.window.setScene(Globals.splashScene);
             window.close();
         });

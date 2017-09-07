@@ -48,8 +48,7 @@ public class GameLoop extends AnimationTimer {
             }
 
         } else {
-            System.out.println("scores: "+Globals.scores);
-            System.out.println("Game over!");
+            Globals.clearGameObjects();
             resetControlBooleans();
             GameOverScreen.display();
             Globals.gameLoop.stop();
