@@ -10,8 +10,8 @@ import javafx.scene.layout.Pane;
 
 public class FollowingEnemy extends AbstractEnemy implements Animatable{
 
-    private static final double SPEED = 1.5;
-    private static final float TURN_RATE = 10;
+    private static final double SPEED = 2.2;
+    private static final float TURN_RATE = 7;
 
     public FollowingEnemy(Pane pane) {
         super(pane, Globals.followingEnemy);

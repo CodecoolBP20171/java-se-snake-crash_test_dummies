@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
-    private static final float DEFAULT_SPEED = 2;
+    private static final float DEFAULT_SPEED = 2.5f;
     private float speed = DEFAULT_SPEED;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;

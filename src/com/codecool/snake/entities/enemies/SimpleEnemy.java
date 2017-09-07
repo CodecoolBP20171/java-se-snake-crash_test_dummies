@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 
 public class SimpleEnemy extends AbstractEnemy implements Animatable {
 
-    private static final int SPEED = 2;
+    private static final double SPEED = 2.5;
 
     public SimpleEnemy(Pane pane) { //  Globals.simpleEnemy
         super(pane, Globals.simpleEnemy);

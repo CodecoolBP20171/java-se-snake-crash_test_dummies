@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 
 public abstract class AbstractEnemy  extends GameEntity implements Interactable {
 
-    protected static final int DAMAGE = 10;
+    protected static final int DAMAGE = 30;
     private static final int SPAWN_CONSTRAINT = 70;
     private static final int SPAWN_CLEARANCE_MULTIPLIER = 5;
 

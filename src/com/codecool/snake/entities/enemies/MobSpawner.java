@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 public class MobSpawner extends GameEntity implements Animatable{
     private static final int MIN_TIMEOUT = 90;  // 1.5 seconds
     private static final int MAX_TIMEOUT = 420; // 7 seconds
-    private static final int DIFFICULTY_TIMEOUT = 600;  // 10 seconds
+    private static final int DIFFICULTY_TIMEOUT = 420;  // 7 seconds
 
     private static int CIRCLING_STARTING_COUNT;
     private static int SIMPLE_STARTING_COUNT;
@@ -55,7 +55,7 @@ public class MobSpawner extends GameEntity implements Animatable{
             spawnCirclingEnemy();
         }
         for (int i = 0; i < FOLLOWING_STARTING_COUNT; i++) {
-            spawnSimpleEnemy();
+            spawnFollowingEnemy();
         }
         for (int i = 0; i < SIMPLE_STARTING_COUNT; i++) {
             spawnSimpleEnemy();

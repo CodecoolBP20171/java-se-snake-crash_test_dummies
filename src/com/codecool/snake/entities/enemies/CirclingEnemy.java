@@ -8,8 +8,8 @@ import javafx.scene.layout.Pane;
 
 
 public class CirclingEnemy extends AbstractEnemy implements Animatable {
-    private static final float TURN_RATE = 1.75f;
-    private static final double SPEED = 2.1;
+    private static final float TURN_RATE = 2;
+    private static final double SPEED = 3.75;
     private Direction turnDirection;
 
     public CirclingEnemy(Pane pane) {
