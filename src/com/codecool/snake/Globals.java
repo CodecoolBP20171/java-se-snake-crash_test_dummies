@@ -5,6 +5,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class Globals {
     public static boolean player1Right;
     public static boolean player2Left;
     public static boolean player2Right;
+    public static List<SnakeHead> players = new ArrayList<>(2);
 
     public static List<GameEntity> gameObjects;
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.

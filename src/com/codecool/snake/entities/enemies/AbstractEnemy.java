@@ -14,6 +14,7 @@ public abstract class AbstractEnemy  extends GameEntity implements Interactable 
 
     protected static final int DAMAGE = 10;
     private static final int SPAWN_CONSTRAINT = 70;
+    private static final int SPAWN_CLEARANCE_MULTIPLIER = 5;
 
     protected Point2D heading;
 
@@ -28,8 +29,27 @@ public abstract class AbstractEnemy  extends GameEntity implements Interactable 
     }
 
     private void setSpawnpoint(Random randomGenerator) {
-        setX(SPAWN_CONSTRAINT + randomGenerator.nextDouble() * (Globals.WINDOW_WIDTH - SPAWN_CONSTRAINT * 2));
-        setY(SPAWN_CONSTRAINT + randomGenerator.nextDouble() * (Globals.WINDOW_HEIGHT - SPAWN_CONSTRAINT * 2));
+        boolean locationIsOccupied = true;
+        while (locationIsOccupied) {
+            double newX = SPAWN_CONSTRAINT + randomGenerator.nextDouble() * (Globals.WINDOW_WIDTH - SPAWN_CONSTRAINT * 2);
+            double newY = SPAWN_CONSTRAINT + randomGenerator.nextDouble() * (Globals.WINDOW_HEIGHT - SPAWN_CONSTRAINT * 2);
+
+            for (SnakeHead player : Globals.players) {
+                if (
+                        newX > player.getX() - (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
+                                newX < player.getX() + (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
+                                newY > player.getY() - (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
+                                newY < player.getY() + (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER)
+                        ) {
+                    locationIsOccupied = true;
+                    break;
+                } else {
+                    setX(newX);
+                    setY(newY);
+                    locationIsOccupied = false;
+                }
+            }
+        }
     }
 
     @Override

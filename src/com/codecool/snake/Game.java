@@ -8,27 +8,20 @@ import com.codecool.snake.entities.stats.DisplayHealth;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Game extends Pane {
 
     public Game() {
-        List<SnakeHead> players = new ArrayList<>(2);
-        SnakeHead player1, player2;
 
         if(Globals.coop) {
-            player1 = new SnakeHead(this, "Player1", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2);
-            player2 = new SnakeHead(this, "Player2", (int)Globals.WINDOW_WIDTH/3, (int)Globals.WINDOW_HEIGHT/2);
-            players.add(player2);
-            new DisplayHealth(this, player1);
-            new DisplayHealth(this, player2);
+            Globals.players.add(new SnakeHead(this, "Player1", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2));
+            Globals.players.add(new SnakeHead(this, "Player2", (int)Globals.WINDOW_WIDTH/3, (int)Globals.WINDOW_HEIGHT/2));
+            new DisplayHealth(this, Globals.players.get(0));
+            new DisplayHealth(this, Globals.players.get(1));
         } else {
-            player1 = new SnakeHead(this, "Player1", (int)Globals.WINDOW_WIDTH/2, (int)Globals.WINDOW_HEIGHT/2);
-            new DisplayHealth(this, player1);
+            Globals.players.add(new SnakeHead(this, "Player1", (int)Globals.WINDOW_WIDTH/2, (int)Globals.WINDOW_HEIGHT/2));
+            new DisplayHealth(this, Globals.players.get(0));
         }
-
-        players.add(player1);
 
         new SimpleEnemy(this);
         new SimpleEnemy(this);

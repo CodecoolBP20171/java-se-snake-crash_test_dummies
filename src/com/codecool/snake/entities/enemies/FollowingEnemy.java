@@ -21,35 +21,35 @@ public class FollowingEnemy extends AbstractEnemy implements Animatable{
 
     @Override
     public void step() {
-//        Vec2d origin = new Vec2d(getX(), getY());
-//        Vec2d goal = new Vec2d(Globals.WINDOW_WIDTH / 2, Globals.WINDOW_HEIGHT / 2);
-//        Vec2d destination = new Vec2d(getX() + heading.getX(), getY() + heading.getY());
-//        double distanceFromGoal = Integer.MAX_VALUE;
-//        double angle;
-//
-//        for (SnakeHead player : SnakeHead.getPlayers()) {  // TODO use agreed upon implementation of player listing
-//            double distanceFromPlayer = heading.distance(player.getX(), player.getY());
-//            if (distanceFromPlayer < distanceFromGoal) {
-//                distanceFromGoal = distanceFromPlayer;
-//                goal.set(player.getX(), player.getY());
-//            }
-//        }
-//
-//
-//        double a = origin.distance(destination);    // origin to destination
-//        double b = origin.distance(goal);           // origin to goal
-//        double c = destination.distance(goal);      // destination to goal
-//        angle = Math.toDegrees(Math.acos(
-//                (c*c - a*a - b*b) /
-//                (-2 * a * b)
-//        ));
-//
-//        if (angle > 15) {
-//            setRotate(getRotate() + TURN_RATE);
-//            heading = Utils.directionToVector(getRotate(), SPEED);
-//        }
-//
-//        setX(getX() + heading.getX());
-//        setY(getY() + heading.getY());
+        Vec2d origin = new Vec2d(getX(), getY());
+        Vec2d goal = new Vec2d(Globals.WINDOW_WIDTH / 2, Globals.WINDOW_HEIGHT / 2);
+        Vec2d destination = new Vec2d(getX() + heading.getX(), getY() + heading.getY());
+        double distanceFromGoal = Integer.MAX_VALUE;
+        double angle;
+
+        for (SnakeHead player : Globals.players) {  // TODO use agreed upon implementation of player listing
+            double distanceFromPlayer = heading.distance(player.getX(), player.getY());
+            if (distanceFromPlayer < distanceFromGoal) {
+                distanceFromGoal = distanceFromPlayer;
+                goal.set(player.getX(), player.getY());
+            }
+        }
+
+
+        double a = origin.distance(destination);    // origin to destination
+        double b = origin.distance(goal);           // origin to goal
+        double c = destination.distance(goal);      // destination to goal
+        angle = Math.toDegrees(Math.acos(
+                (c*c - a*a - b*b) /
+                (-2 * a * b)
+        ));
+
+        if (angle > 15) {
+            setRotate(getRotate() + TURN_RATE);
+            heading = Utils.directionToVector(getRotate(), SPEED);
+        }
+
+        setX(getX() + heading.getX());
+        setY(getY() + heading.getY());
     }
 }
