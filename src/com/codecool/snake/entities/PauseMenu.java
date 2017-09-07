@@ -22,16 +22,16 @@ public class PauseMenu {
 
         Button resumeButton = new Button("Close");
         resumeButton.setOnMouseClicked(e -> {
-            window.close();
             Globals.paused = false;
             Globals.gameLoop.start();
+            window.close();
         });
 
         Button restartButton = new Button("Restart game");
         restartButton.setOnMouseClicked(e -> {
-            window.close();
             Globals.paused = false;
             Globals.window.setScene(Globals.splashScene);
+            window.close();
         });
 
         VBox layout = new VBox(25);

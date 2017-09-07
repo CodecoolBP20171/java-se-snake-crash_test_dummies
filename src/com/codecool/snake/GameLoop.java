@@ -12,6 +12,10 @@ public class GameLoop extends AnimationTimer {
     public void handle(long now) {
 
         if (Globals.paused) {
+            Globals.player2Right = false;
+            Globals.player2Left = false;
+            Globals.player1Right = false;
+            Globals.player1Left = false;
             PauseMenu.display();
             Globals.gameLoop.stop();
         } else {
