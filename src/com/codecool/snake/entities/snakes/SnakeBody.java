@@ -58,11 +58,8 @@ public class SnakeBody extends GameEntity implements Animatable, Interactable {
     @Override
     public void apply(SnakeHead snakeHead){
         if (!snakeHead.getPlayerName().equals(this.getPlayerName())){
-            snakeHead.updateScores();
-            snakeHead.removeTail();
             Globals.players.remove(snakeHead);
-            snakeHead.destroy();
-            // Globals.gameLoop.stop();
+            snakeHead.setHealth(0);
         }
     }
 

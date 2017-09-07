@@ -152,6 +152,10 @@ public class SnakeHead extends GameEntity implements Animatable {
         this.health += diff;
     }
 
+    public void setHealth(int newHealth) {
+        this.health = newHealth;
+    }
+
     public void updateScores() {
         Globals.scores.put(this.playerName, this.score);
     }
