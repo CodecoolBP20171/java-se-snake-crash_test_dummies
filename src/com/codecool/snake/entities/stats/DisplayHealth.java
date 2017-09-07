@@ -18,7 +18,7 @@ public class DisplayHealth extends GameEntity implements Animatable{
 
         this.displayHealth = new Label();
         this.player = player;
-        this.displayHealth.setText(player.getPlayerName() + " healt");
+        this.displayHealth.setText(player.getPlayerName() + " health");
 
         if (player.getPlayerName() == "Player2") {
             this.displayHealth.setLayoutX(Globals.WINDOW_WIDTH-230);
