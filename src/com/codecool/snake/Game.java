@@ -7,6 +7,7 @@ import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import com.codecool.snake.entities.stats.DisplayHealth;
+import com.codecool.snake.entities.stats.DisplayScores;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
@@ -18,13 +19,16 @@ public class Game extends Pane {
         Globals.players.clear();
 
         if(Globals.coop) {
-            Globals.players.add(new SnakeHead(this, "Player1", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2));
-            Globals.players.add(new SnakeHead(this, "Player2", (int)Globals.WINDOW_WIDTH/3, (int)Globals.WINDOW_HEIGHT/2));
+            Globals.players.add(new SnakeHead(this, "Player1", (int)Globals.WINDOW_WIDTH/3, (int)Globals.WINDOW_HEIGHT/2));
+            Globals.players.add(new SnakeHead(this, "Player2", ((int)Globals.WINDOW_WIDTH/3)*2, (int)Globals.WINDOW_HEIGHT/2));
             new DisplayHealth(this, Globals.players.get(0));
             new DisplayHealth(this, Globals.players.get(1));
+            new DisplayScores(this, Globals.players.get(0));
+            new DisplayScores(this, Globals.players.get(1));
         } else {
             Globals.players.add(new SnakeHead(this, "Player1", (int)Globals.WINDOW_WIDTH/2, (int)Globals.WINDOW_HEIGHT/2));
             new DisplayHealth(this, Globals.players.get(0));
+            new DisplayScores(this, Globals.players.get(0));
         }
 
         Globals.mobSpawner = new MobSpawner(this);

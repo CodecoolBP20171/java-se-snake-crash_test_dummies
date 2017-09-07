@@ -18,7 +18,7 @@ public class DisplayHealth extends GameEntity implements Animatable{
 
         this.displayHealth = new Label();
         this.player = player;
-        this.displayHealth.setText(String.valueOf(player.getHealth()));
+        this.displayHealth.setText(player.getPlayerName() + " healt");
 
         if (player.getPlayerName() == "Player2") {
             this.displayHealth.setLayoutX(Globals.WINDOW_WIDTH-230);
@@ -32,19 +32,11 @@ public class DisplayHealth extends GameEntity implements Animatable{
             this.displayHealth.setPrefWidth(player.getHealth()*2);
         }
 
-        //displayHealth.setFitWidth(200);
-        //this.setStyle("-fx-background-color: blue;");
-        //this.setStyle("-fx-background-color: blue;");
-
-
-
-
         pane.getChildren().add(displayHealth);
     }
 
     @Override
     public void step() {
-        displayHealth.setText(String.valueOf(player.getHealth()));
         displayHealth.setPrefWidth(player.getHealth()*2);
     }
 }
