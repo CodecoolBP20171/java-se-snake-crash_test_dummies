@@ -8,7 +8,6 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
-import java.util.Random;
 
 public abstract class AbstractEnemy  extends GameEntity implements Interactable {
 
@@ -23,16 +22,15 @@ public abstract class AbstractEnemy  extends GameEntity implements Interactable 
         setImage(image);
         pane.getChildren().add(this);
 
-        Random rnd = new Random();
-        setSpawnpoint(rnd);
-        setRotate(rnd.nextDouble() * 360);
+        setSpawnpoint();
+        setRotate(Globals.RND.nextDouble() * 360);
     }
 
-    private void setSpawnpoint(Random randomGenerator) {
+    private void setSpawnpoint() {
         boolean locationIsOccupied = true;
         while (locationIsOccupied) {
-            double newX = SPAWN_CONSTRAINT + randomGenerator.nextDouble() * (Globals.WINDOW_WIDTH - SPAWN_CONSTRAINT * 2);
-            double newY = SPAWN_CONSTRAINT + randomGenerator.nextDouble() * (Globals.WINDOW_HEIGHT - SPAWN_CONSTRAINT * 2);
+            double newX = SPAWN_CONSTRAINT + Globals.RND.nextDouble() * (Globals.WINDOW_WIDTH - SPAWN_CONSTRAINT * 2);
+            double newY = SPAWN_CONSTRAINT + Globals.RND.nextDouble() * (Globals.WINDOW_HEIGHT - SPAWN_CONSTRAINT * 2);
 
             for (SnakeHead player : Globals.players) {
                 if (
