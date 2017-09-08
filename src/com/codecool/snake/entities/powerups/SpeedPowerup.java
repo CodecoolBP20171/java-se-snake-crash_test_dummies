@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class SpeedPowerup extends GameEntity implements Interactable {
 
-    private static final float SPEED = 2.5f;
+    private static final float SPEED = 3.5f;
     private static final int SPEED_BUFF_TIMER = 180;
     public static int counter = 0;
     public static final int SCORE_AMOUNT = 2500;

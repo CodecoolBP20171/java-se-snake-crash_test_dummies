@@ -42,6 +42,11 @@ public class PauseMenu {
             window.close();
         });
 
+        window.setOnCloseRequest(e -> {
+            Globals.paused = false;
+            Globals.gameLoop.start();
+        });
+
         VBox layout = new VBox(25);
         Scene pauseScene = new Scene(layout);
 
