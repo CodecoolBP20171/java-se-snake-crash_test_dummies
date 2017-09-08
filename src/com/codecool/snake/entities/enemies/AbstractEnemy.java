@@ -13,7 +13,7 @@ public abstract class AbstractEnemy  extends GameEntity implements Interactable 
 
     protected static final int DAMAGE = 30;
     private static final int SPAWN_CONSTRAINT = 70;
-    private static final int SPAWN_CLEARANCE_MULTIPLIER = 5;
+    private static final int SPAWN_CLEARANCE = (int) Globals.p1snakeHead.getWidth() * 5;
 
     protected Point2D heading;
 
@@ -34,11 +34,11 @@ public abstract class AbstractEnemy  extends GameEntity implements Interactable 
 
             for (SnakeHead player : Globals.players) {
                 if (
-                        newX > player.getX() - (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
-                                newX < player.getX() + (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
-                                newY > player.getY() - (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER) &&
-                                newY < player.getY() + (Globals.PLAYER_SPRITE_SIZE * SPAWN_CLEARANCE_MULTIPLIER)
-                        ) {
+                        newX > player.getX() - SPAWN_CLEARANCE &&
+                        newX < player.getX() + SPAWN_CLEARANCE &&
+                        newY > player.getY() - SPAWN_CLEARANCE &&
+                        newY < player.getY() + SPAWN_CLEARANCE
+                ) {
                     locationIsOccupied = true;
                     break;
                 } else {

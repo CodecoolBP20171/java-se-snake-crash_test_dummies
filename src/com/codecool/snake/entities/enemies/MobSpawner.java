@@ -10,17 +10,17 @@ public class MobSpawner extends GameEntity implements Animatable{
     private static final int MAX_TIMEOUT = 420; // 7 seconds
     private static final int DIFFICULTY_TIMEOUT = 420;  // 7 seconds
 
-    private static int CIRCLING_STARTING_COUNT;
-    private static int SIMPLE_STARTING_COUNT;
-    private static int FOLLOWING_STARTING_COUNT;
+    private static int circlingStartingCount;
+    private static int followingStartingCount;
+    private static int simpleStartingCount;
 
-    private static int CIRCLING_CURRENT_COUNT;
-    private static int FOLLOWING_CURRENT_COUNT;
-    private static int SIMPLE_CURRENT_COUNT;
+    private static int circlingCurrentCount;
+    private static int followingCurrentCount;
+    private static int simpleCurrentCount;
 
-    private static int CIRCLING_MAX_COUNT;
-    private static int FOLLOWING_MAX_COUNT;
-    private static int SIMPLE_MAX_COUNT;
+    private static int circlingMaxCount;
+    private static int followingMaxCount;
+    private static int simpleMaxCount;
 
     private int currentTimer;
     private int difficulty;
@@ -29,17 +29,17 @@ public class MobSpawner extends GameEntity implements Animatable{
     private int timeout;
 
     static {
-        CIRCLING_CURRENT_COUNT = 0;
-        FOLLOWING_CURRENT_COUNT = 0;
-        SIMPLE_CURRENT_COUNT = 0;
+        circlingCurrentCount = 0;
+        followingCurrentCount = 0;
+        simpleCurrentCount = 0;
 
-        CIRCLING_STARTING_COUNT = 3;
-        FOLLOWING_STARTING_COUNT = 1;
-        SIMPLE_STARTING_COUNT = 3;
+        circlingStartingCount = 3;
+        followingStartingCount = 1;
+        simpleStartingCount = 3;
 
-        CIRCLING_MAX_COUNT = 7;
-        FOLLOWING_MAX_COUNT = 3;
-        SIMPLE_MAX_COUNT = 7;
+        circlingMaxCount = 7;
+        followingMaxCount = 3;
+        simpleMaxCount = 7;
     }
 
     public MobSpawner(Pane pane) {
@@ -51,13 +51,13 @@ public class MobSpawner extends GameEntity implements Animatable{
         this.pane = pane;
         setTimeout();
 
-        for (int i = 0; i < CIRCLING_STARTING_COUNT; i++) {
+        for (int i = 0; i < circlingStartingCount; i++) {
             spawnCirclingEnemy();
         }
-        for (int i = 0; i < FOLLOWING_STARTING_COUNT; i++) {
+        for (int i = 0; i < followingStartingCount; i++) {
             spawnFollowingEnemy();
         }
-        for (int i = 0; i < SIMPLE_STARTING_COUNT; i++) {
+        for (int i = 0; i < simpleStartingCount; i++) {
             spawnSimpleEnemy();
         }
     }
@@ -67,36 +67,36 @@ public class MobSpawner extends GameEntity implements Animatable{
     }
 
     private void spawnCirclingEnemy() {
-        if (CIRCLING_CURRENT_COUNT < CIRCLING_MAX_COUNT) {
+        if (circlingCurrentCount < circlingMaxCount) {
             new CirclingEnemy(pane);
-            CIRCLING_CURRENT_COUNT++;
+            circlingCurrentCount++;
         }
     }
 
     private void spawnFollowingEnemy() {
-        if (FOLLOWING_CURRENT_COUNT < FOLLOWING_MAX_COUNT) {
+        if (followingCurrentCount < followingMaxCount) {
             new FollowingEnemy(pane);
-            FOLLOWING_CURRENT_COUNT++;
+            followingCurrentCount++;
         }
     }
 
     private void spawnSimpleEnemy() {
-        if (SIMPLE_CURRENT_COUNT < SIMPLE_MAX_COUNT) {
+        if (simpleCurrentCount < simpleMaxCount) {
             new SimpleEnemy(pane);
-            SIMPLE_CURRENT_COUNT++;
+            simpleCurrentCount++;
         }
     }
 
     public void decrementCirclingEnemyCounter() {
-        CIRCLING_CURRENT_COUNT--;
+        circlingCurrentCount--;
     }
 
     public void decrementFollowingEnemyCounter() {
-        FOLLOWING_CURRENT_COUNT--;
+        followingCurrentCount--;
     }
 
     public void decrementSimpleEnemyCounter() {
-        SIMPLE_CURRENT_COUNT--;
+        simpleCurrentCount--;
     }
 
     @Override
@@ -106,10 +106,10 @@ public class MobSpawner extends GameEntity implements Animatable{
 
         if (difficultyTimer == DIFFICULTY_TIMEOUT) {
             difficulty++;
-            SIMPLE_MAX_COUNT++;
-            CIRCLING_MAX_COUNT++;
+            simpleMaxCount++;
+            circlingMaxCount++;
             if (difficulty % 3 == 0) {
-                FOLLOWING_MAX_COUNT++;
+                followingMaxCount++;
             }
             difficultyTimer = 0;
         }
