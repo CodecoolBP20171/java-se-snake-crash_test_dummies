@@ -23,9 +23,6 @@ public class Globals {
     public static Stage window;
     public static Scene splashScene;
 
-    public static final short PLAYER_SPRITE_SIZE = 30;
-    public static final short SPAWN_CLEARANCE_MULTIPLIER = 6;
-
     public static Game currentGame;
     public static Animatable spawnController;
 
